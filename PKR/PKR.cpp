@@ -16,25 +16,61 @@ int main()
 
     //Make your cards here
     std::vector<Card> cards1;
-    cards1.push_back(HEART_A);
-    cards1.push_back(HEART_2);
-    cards1.push_back(HEART_3);
-    cards1.push_back(HEART_4);
+    cards1.push_back(HEART_7);
+    cards1.push_back(CLUBS_6);
+    cards1.push_back(DIAMOND_6);
+    cards1.push_back(SPADES_7);
     cards1.push_back(HEART_5);
 
     std::vector<Card> cards2;
-    cards1.push_back(DIAMOND_A);
-    cards1.push_back(DIAMOND_2);
-    cards1.push_back(DIAMOND_3);
-    cards1.push_back(DIAMOND_4);
-    cards1.push_back(DIAMOND_5);
+    cards2.push_back(DIAMOND_A);
+    cards2.push_back(CLUBS_6);
+    cards2.push_back(DIAMOND_3);
+    cards2.push_back(DIAMOND_4);
+    cards2.push_back(DIAMOND_5);
 
     //Create our two test hands
     const Hand hand1 = Hand(cards1);
     const Hand hand2 = Hand(cards2);
 
-    int result = hand1.CompareHand(hand2);
+    //Test Highest Card Function
+    Card::Face highestFaceCard = Hand::HighestFaceCard(hand1);
+    std::cout << "Highest Face Card: " << Card::FaceToString(highestFaceCard) << "\n";
 
+    //Test if Hand is Flush
+    bool isFlush = Hand::IsFlush(hand1);
+    std::cout << "Hand has flush: " << isFlush << "\n";
+
+    //Test if Hand is Straight
+    bool isStraight = Hand::IsStraight(hand1);
+    std::cout << "Hand has straight: " << isStraight << "\n";
+
+    //Test if Hand is StraightFlush
+    bool isStraightFlush = Hand::IsStraightFlush(hand2);
+    std::cout << "Hand has straight flush: " << isStraightFlush << "\n";
+
+    //Test if Hand is TOAK
+    bool isTOAK = Hand::HasPair(hand1, 3);
+    std::cout << "Hand has TOAK: " << isTOAK << "\n";
+
+    //Test if Hand has pair
+    bool hasPair = Hand::HasPair(hand1, 2);
+    std::cout << "Hand has pair: " << hasPair << "\n";
+
+    //Get Highest pair, defaults to first card if no pair
+    Card::Face highestFacePair = Hand::HighestFacePair(hand1, 2);
+    std::cout << "Highest face of pair: " << Card::FaceToString(highestFacePair) << "\n";
+
+    //Rank both hands
+    Hand::HandRank pair1Rank = Hand::RankHand(hand1);
+    std::cout << "Rank of hand 1: " << Hand::RankToString(pair1Rank) << "\n";
+
+    Hand::HandRank pair2Rank = Hand::RankHand(hand2);
+    std::cout << "Rank of hand 2: " << Hand::RankToString(pair2Rank) << "\n";
+
+
+    //Test Final Hand Comparisons
+    int result = hand1.CompareHand(hand2);
     if (result < 0)
     {
         std::cout << "Hand 1 lost.\n";

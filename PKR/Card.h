@@ -17,10 +17,15 @@ private:
 	//DIAMOND are 9-16
 	//and so on...
 	static const uint SUIT_OFFSET = 9;
+	const static char* FACE_STRINGS[];
+	const static char* SUIT_STRINGS[];
 	
 public:
 	enum Suit : uint { HEARTS = 0, DIAMONDS = 1, CLUBS = 2, SPADES = 3 };
-	enum Face : uint { ACE = 0, TWO = 1, THREE = 2, FOUR = 3, FIVE = 4, SIX = 5, SEVEN = 6, EIGHT = 7, NINE = 8 };
+	enum Face : uint { TWO = 0, THREE = 1, FOUR = 2, FIVE = 3, SIX = 4, SEVEN = 5, EIGHT = 6, NINE = 7, ACE = 8 };
+	
+
+
 	Card(Suit suit, Face face);
 	Card(std::string p_cardID);
 	Card(const Card&);
@@ -34,6 +39,10 @@ public:
 	static Card::Face GetFace(const Card&);
 	static Card::Suit GetSuit(const Card&);
 
+	static const char* FaceToString(const Card::Face&);
+	static const char* SuitToString(const Card::Suit&);
+
+	static const bool AreFacesConsecutive(const Card::Face&, const Card::Face&);
 };
 
 //Lets stick the preprossesor garbage below:
