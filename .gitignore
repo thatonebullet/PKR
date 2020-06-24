@@ -49,3 +49,4 @@
 /PKR/Debug/PKR.vcxproj.FileListAbsolute.txt
 /PKR/Debug/vc142.idb
 /PKR/Debug/vc142.pdb
+*.ipch
