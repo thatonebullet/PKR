@@ -16,20 +16,23 @@ private:
 	//HEARTS are 0-8
 	//DIAMOND are 9-16
 	//and so on...
-	const uint SUIT_OFFSET = 9;
+	static const uint SUIT_OFFSET = 9;
 	
 public:
-	enum Suit { HEARTS = 0, DIAMONDS = 1, CLUBS = 2, SPADES = 3 };
-	enum Face { ACE = 0, TWO = 1, THREE = 2, FOUR = 3, FIVE = 4, SIX = 5, SEVEN = 6, EIGHT = 7, NINE = 8 };
+	enum Suit : uint { HEARTS = 0, DIAMONDS = 1, CLUBS = 2, SPADES = 3 };
+	enum Face : uint { ACE = 0, TWO = 1, THREE = 2, FOUR = 3, FIVE = 4, SIX = 5, SEVEN = 6, EIGHT = 7, NINE = 8 };
 	Card(Suit suit, Face face);
 	Card(std::string p_cardID);
 	Card(const Card&);
-	
 	~Card();
+
 	Card operator=(const Card&);
 	bool operator==(const Card&);
 	bool operator<(const Card&);
 	bool operator>(const Card&);
+
+	static Card::Face GetFace(const Card&);
+	static Card::Suit GetSuit(const Card&);
 
 };
 

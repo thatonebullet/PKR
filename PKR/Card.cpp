@@ -38,3 +38,15 @@ bool Card::operator>(const Card& p_otherCard)
 {
 	return p_otherCard.m_id > m_id;
 }
+
+Card::Suit Card::GetSuit(const Card& p_otherCard)
+{
+	Card::Suit suit = (Card::Suit)(p_otherCard.m_id / SUIT_OFFSET);
+	return suit;
+}
+
+Card::Face Card::GetFace(const Card& p_otherCard) 
+{
+	Card::Face face = (Card::Face)(p_otherCard.m_id % SUIT_OFFSET);
+	return face;
+}

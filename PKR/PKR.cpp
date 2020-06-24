@@ -30,8 +30,8 @@ int main()
     cards1.push_back(DIAMOND_5);
 
     //Create our two test hands
-    Hand hand1 = Hand(cards1);
-    Hand hand2 = Hand(cards2);
+    const Hand hand1 = Hand(cards1);
+    const Hand hand2 = Hand(cards2);
 
     int result = hand1.CompareHand(hand2);
 
