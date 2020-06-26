@@ -19,15 +19,11 @@ int main()
     cards1.push_back(HEART_7);
     cards1.push_back(CLUBS_6);
     cards1.push_back(DIAMOND_6);
-    cards1.push_back(SPADES_7);
-    cards1.push_back(HEART_5);
 
     std::vector<Card> cards2;
     cards2.push_back(DIAMOND_A);
-    cards2.push_back(CLUBS_6);
+    cards2.push_back(CLUBS_2);
     cards2.push_back(DIAMOND_3);
-    cards2.push_back(DIAMOND_4);
-    cards2.push_back(DIAMOND_5);
 
     //Create our two test hands
     const Hand hand1 = Hand(cards1);

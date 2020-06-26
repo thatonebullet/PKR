@@ -243,8 +243,22 @@ bool Hand::IsStraight(const Hand& p_Hand)
 	if (isStraight == false)
 	{
 		//Final check for special case Ace low
-		std::vector<Card::Face> aceLow = { Card::Face::TWO, Card::Face::THREE, Card::Face::FOUR, Card::Face::FIVE, Card::Face::ACE };
-		isStraight = aceLow == face_vector;
+		//Making this more generic for all hand sized
+		//if the last card is an ace...
+		if (face_vector.size() > 1 && face_vector[face_vector.size() - 1] == Card::Face::ACE)
+		{
+			//Loop until before the very last card (which we know is an ace)
+			for (uint i = 0; i < face_vector.size() - 1; i++)
+			{
+				//Since face card 2 is enum 0, then we can just start comparing to the raw enum value
+				if (face_vector[i] != i)
+				{
+					break;
+				}
+			}
+			//If the validation passes the loop without breaking, then we know this is a special case straight
+			isStraight = true;
+		}
 	}
 
 	return isStraight;
